@@ -1,69 +1,67 @@
-# React + TypeScript + Vite
+# Assessment Talentlytica
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight React + TypeScript application built with Vite. This repository is intended as a technical test that showcases a simple student assessment UI where scores can be set per aspect and exported as structured JSON.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Purpose: Technical test to implement an assessment page for students with multiple scoring aspects.
+- Key features:
+  - Dynamic table with rows per student and columns per assessment aspect
+  - Controlled inputs with memoized state updates to minimize re-renders
+  - JSON output generation on save
 
-## Expanding the ESLint configuration
+## Technologies
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Vite (build tooling and dev server)
+- React (UI library) + TypeScript
+- Tailwind CSS (utility-first styling)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- Node.js 20.19+ or 22.12+ (Vite requirement)
+- npm (or your preferred package manager)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+If you are on Node 20.17 (or older), please upgrade to at least 20.19 to avoid warnings/errors.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started (Development)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Install dependencies:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   ```bash
+   npm install
+   ```
+
+2. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Open the app in your browser (Vite will print the URL, commonly http://localhost:5173).
+
+## Build for Production
+
+1. Create an optimized production build:
+
+   ```bash
+   npm run build
+   ```
+
+   The output will be generated in the `dist/` directory.
+
+2. Preview the production build locally (optional):
+
+   ```bash
+   npm run preview
+   ```
+
+## Project Scripts
+
+- `npm run dev` – Start Vite dev server with HMR
+- `npm run build` – Build the app for production into `dist/`
+- `npm run preview` – Preview the production build locally
+
+## Notes
+
+- Tailwind utility classes are used throughout the UI. Ensure your editor has Tailwind IntelliSense for the best DX.
+- The app state and components have been optimized to reduce unnecessary re-renders using `React.memo`, `useMemo`, and `useCallback` where appropriate.
